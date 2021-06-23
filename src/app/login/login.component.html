@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-1 col-sm-2 col-md-2 col-lg-3"></div>
+    <div class="col-10 col-sm-8 col-md-8 col-lg-6">
+        <div class="container w-100 d-block mx-auto border border-black mt-5 mb-4">
+
+            <!-- Heading for register page -->
+            <img src="/assets/login.svg" width="30%" class="d-block mx-auto">
+            <h1 class="text-center mt-0 mb-4" id="register"><i class="fas fa-sign-in-alt me-2"></i>Login Form</h1>
+
+            <!-- Form inside register page -->
+            <form #ref="ngForm" (ngSubmit)="onLogin(ref.value)">
+
+                <!-- user radio -->
+                <div class="form-check form-check-inline mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label " for="flexRadioDefault1">
+                      User
+                    </label>
+                  </div>
+
+                  <!-- admin radio -->
+                  <div class="form-check form-check-inline mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Admin
+                    </label>
+                  </div><br>
+
+                <!-- username field -->
+                <label for="un" class="form-label"><i class="fas fa-user-plus me-2"></i>Username</label>
+                <input type="text" class="form-control" name="username" id="un" placeholder="Enter Username..." ngModel>
+
+                <!-- password field -->
+                <label for="pw" class="form-label mt-3"><i class="fas fa-lock me-2"></i>Password</label>
+                <input type="password" class="form-control" name="password" id="pw" placeholder="Enter Password..." ngModel>
+
+                <button type="submit" class="btn btn-success d-block mx-auto mt-5 mb-5"><i class="fas fa-plus-circle ms-0 me-1"></i>Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-1 col-sm-2 col-md-2 col-lg-3"></div>
+</div>

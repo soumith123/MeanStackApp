@@ -1,0 +1,24 @@
+input
+{
+    border: none;
+    border-bottom: 1px solid black;
+}
+.container
+{
+    box-shadow: 2px 2px 2px 2px gray;
+    border-radius: 30px;
+    background-color: white;
+}
+img
+{
+    position: relative;
+    top:-50px;    
+} 
+label
+{
+    font-size: 17px;
+}
+#register
+{
+    color: tomato;
+}
