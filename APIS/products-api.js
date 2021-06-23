@@ -10,6 +10,34 @@ productApi.use(exp.json());
 // to handle asynchronous error
 const errorHandler=require("express-async-handler");
 
+// importing cloudinary modules
+const cloudinary=require("cloudinary").v2;
+const multer=require("multer")
+const {CloudinaryStorage}=require("multer-storage-cloudinary")
+
+cloudinary.config(
+{
+    cloud_name:'dwrklstdn',
+    api_key:'729253834835715',
+    api_secret:'Hvxr2kikdEfsLxVbY1VNkcx5yeQ'
+})
+
+
+const clsStorage=new CloudinaryStorage(
+{
+    cloudinary:cloudinary,
+    params:async(req,file)=>
+    {
+        return{
+            folder:"Products",
+            public_id:file.fieldname+'-'+Date.now()
+        }
+    }
+})
+
+const multerObj=multer({storage:clsStorage})
+
+
 // GET products
 productApi.get("/getproducts", errorHandler(async (req,res) =>
 {
@@ -45,14 +73,20 @@ productApi.get("/getproduct/:productName", errorHandler(async(req,res) =>
 
 
 // POST a product
-productApi.post("/createproduct", errorHandler(async(req,res) =>
+productApi.post("/createproduct", multerObj.single("photo"),errorHandler(async(req,res) =>
 {
-    let newProduct=req.body;
+    let productCollectionObj=req.app.get("productCollectionObj")
+
+    let newProduct=JSON.parse(req.body.productObj);
+
     let product=await productCollectionObj.findOne({productName : newProduct.productName})
+    
     if(product===null)
     {
+        newProduct.productImage=req.file.path;
+        delete newProduct.photo;
         await productCollectionObj.insertOne(newProduct)
-        res.send({message:"new product created"})
+        res.send({message:"New product created"})
     }
     else
     {

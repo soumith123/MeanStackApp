@@ -1,1 +1,31 @@
-<p>addproducts works!</p>
+<h1 class="text-center mt-5">Enter Product Details</h1>
+<div class="row mt-4">
+    <div class="col-sm-2 col-md-3"></div>
+    <div class="col-sm-8 col-md-6">
+
+      <!-- Form to submit data to creating product -->
+      <form #ref="ngForm" (ngSubmit)="onSubmitProduct(ref.value)">
+          
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="productName" name="productName" ngModel>
+          <label for="productName">Product Name</label>
+        </div>
+       
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="cost" name="cost" ngModel>
+          <label for="cost">Cost</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="description" name="Description" ngModel>
+            <label for="description">Description</label>
+        </div>
+
+        <input type="file" name="photo" class="form-control mt-3 mb-3" ngModel (change)="selectFile($event)">
+
+        <button class="btn btn-success float-end text-white" type="submit">
+              <i class="fas fa-plus-circle me-2"></i>Add</button>
+      </form>
+    </div>
+    <div class="col-sm-2 col-md-3"></div>
+  </div>

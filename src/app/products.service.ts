@@ -13,4 +13,9 @@ export class ProductsService {
   {
     return this.hc.get("/product/getproducts")
   }
+
+  createProducts(productObj):Observable<any>
+  {
+    return this.hc.post("/product/createproduct", productObj)
+  }  
 }

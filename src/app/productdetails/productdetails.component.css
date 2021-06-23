@@ -1,0 +1,11 @@
+input
+{
+    border-radius: 20px;
+    border: none;
+    border-bottom: 2px solid black;
+}
+h1
+{
+    color:rgb(201, 13, 201);
+    font-family:initial;
+}

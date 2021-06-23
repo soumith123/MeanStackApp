@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   file:File;
 
   selectFile(event)
